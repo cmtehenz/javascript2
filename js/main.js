@@ -14,6 +14,29 @@ function getTotal(list){
     return total
 }
 
+function setList(list){
+    var table = '<thead><tr><th scope="col">Description</th><th scope="col">Amount</th><th scope="col">Value</th><th scope="col">Action</th></tr></thead><tbody>'
 
+    for (var key in list){
+        table += '<tr><td>'+ formatDesc(list[key].desc) +'</td><td>'+ list[key].amount +'</td><td>'+ formatValue(list[key].value) +'</td><td>Edit | Delete</td></tr>'
+    }
+    table += '</tbody>'
 
+    document.getElementById('listTable').innerHTML = table
+}
+
+function formatDesc(desc){
+    var str = desc.toLowerCase()
+    str = str.charAt(0).toUpperCase() + str.slice(1)
+    return str
+}
+
+function formatValue(value){
+    var str = parseFloat(value).toFixed(2) + ""
+    str = str.replace('.', ',')
+    return '$ ' + str
+    
+}
+
+setList(list)
 console.log("Total R$ " + getTotal(list))
