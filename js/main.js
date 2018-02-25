@@ -38,5 +38,18 @@ function formatValue(value){
     
 }
 
+function addData(){
+    var desc = document.getElementById('desc').value
+    var amount = document.getElementById('amount').value
+    var value = document.getElementById('value').value
+
+    list.unshift({
+        'desc': desc ,
+        'amount': amount,
+        'value': value,
+    })
+    setList(list)
+}
+
 setList(list)
 console.log("Total R$ " + getTotal(list))
