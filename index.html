@@ -28,7 +28,14 @@
                 <div class="form-group">
                         <input type="text" class="form-control" id="value" placeholder="Value" />
                 </div>
-                <button onclick="addData()" class="btn btn-primary">Add</button>
+                <span id="btnUpdate" style="display: none;">
+                    <button onclick="updateData()" class="btn btn-default">Save</button>
+                    <button onclick="resetForm()" class="btn btn-danger">Cancel</button> 
+                </span>
+               
+                    <button id="btnAdd" onclick="addData()" class="btn btn-primary">Add</button>
+                
+                                 
             </div>
             <table id="listTable" class="table table-striped">
                
