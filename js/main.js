@@ -20,7 +20,8 @@ function setList(list){
     for (var key in list){
         table += '<tr><td>'+ formatDesc(list[key].desc) +'</td><td>'+ list[key].amount +
         '</td><td>'+ formatValue(list[key].value) +'</td><td>'+
-        '<button onclick="setUpdate('+key+');" class="btn btn-default">Edit</button> | Delete</td></tr>'
+        '<button onclick="setUpdate('+key+');" class="btn btn-default">Edit</button> | '+
+        '<button onclick="deleteData('+key+');" class="btn btn-default">Delete</button></td></tr>'
     }
     table += '</tbody>'
 
@@ -89,6 +90,22 @@ function updateData(){
     }
     resetForm()
     setList(list)
+}
+
+function deleteData(id){
+    if(confirm("Delete this item?")){
+        if(id === list.length - 1){ // limpa o ultimo campo
+            list.pop()
+        }else if (id === 0){ //limpa o primeiro campo
+            list.shift(0)
+        }else{
+            var arrAuxIni = list.slice(0, id)
+            var arrAuxEnd = list.slice(id + 1)
+
+            list = arrAuxIni.concat(arrAuxEnd)
+        }
+        setList(list)
+    }
 }
 
 setList(list)
