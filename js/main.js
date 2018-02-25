@@ -11,7 +11,7 @@ function getTotal(list){
     for(var key in list){
         total += list[key].amount * list[key].value
     }
-    return total
+    document.getElementById('totalValue').innerHTML = formatValue(total)
 }
 
 function setList(list){
@@ -26,6 +26,7 @@ function setList(list){
     table += '</tbody>'
 
     document.getElementById('listTable').innerHTML = table
+    getTotal(list)
 }
 
 function formatDesc(desc){
@@ -59,6 +60,7 @@ function addData(){
         'value': value,
     })
     setList(list)
+    resetForm()
 }
 
 function setUpdate(id){
@@ -158,5 +160,11 @@ function validate(){
 
 }
 
+function deleteList(){
+    if(confirm("Delete this list?")){
+        list = [];
+        setList(list)
+    }
+}
+
 setList(list)
-console.log("Total R$ " + getTotal(list))
